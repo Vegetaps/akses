@@ -152,12 +152,12 @@ echo -e "${COLOR1}╰───────────────────�
 
 function List_All_Account() {
   echo -e "     ${COLOR1}╭───────────────────────────╮${NC}"
-echo -   "${COLOR1}$NC${WH}      LIST ACCOUNT PREMIUM ${NC}"
+echo -e"    ${COLOR1}$NC${WH}      LIST ACCOUNT PREMIUM ${NC}"
 echo -e "     ${COLOR1}      ─────────────────────── ${NC}"
 echo -e "    ${COLOR1}$NC${WH}  SSH/NOOBZ   =  ${COLOR1}$ssh1 ${NC}${WH} Account ${NC}"
 echo -e "    ${COLOR1}$NC${WH}  VMESS/WS    =  ${COLOR1}$vma ${NC}${WH} Account ${NC}"
 echo -e "    ${COLOR1}$NC${WH}  VLESS/WS    =  ${COLOR1}$vla ${NC}${WH} Account ${NC}"
-echo -e "    ${COLOR1}$NC${WH}  TROJAN/GRPC =  $${COLOR1}$trb ${NC}${WH} Account ${NC}"
+echo -e "    ${COLOR1}$NC${WH}  TROJAN/GRPC =  ${COLOR1}$trb ${NC}${WH} Account ${NC}"
 echo -e "    ${COLOR1}$NC${WH}  SSR-LIBEV   =  ${COLOR1}$ssa ${NC}${WH} Account ${NC}"
 echo -e "      ${COLOR1}╰───────────────────────────╯${NC}"
 }
