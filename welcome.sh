@@ -140,6 +140,9 @@ function Service_System_Operating() {
   echo -e "\033[0;36m│ \033[0;37m ISP             : \033[0;36m $(cat /etc/xray/isp)\033[0m"
   echo -e "\033[0;36m│ \033[0;37m IP VPS          : \033[0;36m $(curl -s ipv4.icanhazip.com)\033[0m"
   echo -e "\033[0;36m│ \033[0;37m DOMAIN          : \033[0;36m $(cat /etc/xray/domain)\033[0m"
+  echo -e "\033[0;36m│ \033[0;37m CLIENT          : \033[0;36m $(cat /usr/bin/user)\033[0m"
+  echo -e "\033[0;36m│ \033[0;37m EXPIRED         : \033[0;36m $(((d1 - d2) / 86400)) Day\033[0m"
+  echo -e "\033[0;36m│ \033[0;37m VERSION         : \033[0;36m Premium V.1.0\033[0m"
   echo -e "\033[0;36m└─────────────────────────────────────────────────┘\033[0m"
 }
 
@@ -162,18 +165,10 @@ echo -e "         ${COLOR1}$NC${WH}  SSR-LIBEV   =  ${COLOR1}$ssa ${NC}${WH} Acc
 echo -e "         ${COLOR1}╰────────────────────────────╯${NC}"
 }
 
-function Details_Clients_Name() {
-  echo -e "\033[0;36m┌─────────────────────────────────────────────────┐\033[0m"
-  echo -e "\033[0;36m│ \033[0;37m VERSION    : \033[0;36mV.1.1\033[0m"
-  echo -e "\033[0;36m│ \033[0;37m CLIENTS    : \033[0;36m$(cat /usr/bin/user)\033[0m"
-  echo -e "\033[0;36m│ \033[0;37m EXPIRED    : \033[0;36m$(((d1 - d2) / 86400)) Day\033[0m"
-  echo -e "\033[0;36m└─────────────────────────────────────────────────┘\033[0m"
-}
-
 function Details_Bw_Clients() {
   echo -e "\033[0;36m   ┌───────────────────────────────────────────┐\033[0m"
-  echo -e "\033[0;36m   │  \033[0;37m KEMARIN   |  HARI INI   |  BULANAN\033[0m"
-  echo -e "\033[0;36m   │  \033[0;36m$kemarin1 $hariini1  $bulan1\033[0m"
+  echo -e "\033[0;36m   │  \033[0;37m KEMARIN   |  HARI INI   |  BULANAN\033[0m" 
+  echo -e "\033[0;36m   │  \033[0;36m$kemarin1 $hariini1  $bulan1\033[0m"           
   echo -e "\033[0;36m   └───────────────────────────────────────────┘\033[0m"
 }
 
@@ -187,6 +182,5 @@ paintechvpn
 Service_System_Operating
 Service_Status
 List_All_Account
-Details_Clients_Name
 Details_Bw_Clients
 Acces_Use_Command
