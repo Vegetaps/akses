@@ -43,12 +43,14 @@ xray_service=$(systemctl status xray | grep Active | awk '{print $3}' | cut -d "
 
 nginx_service=$(systemctl status nginx | grep Active | awk '{print $3}' | cut -d "(" -f2 | cut -d ")" -f1)
 
+noobz_service=$( systemctl status noobzvpns | grep Active | awk '{print $3}' | sed 's/(//g' | sed 's/)//g' )
+
 clear
 ######################################
 # // RUNNING SSH
 ######################################
 if [[ $ssh_service == "running" ]]; then 
-   status_ssh="\033[92;1mON${NC}"
+   status_ssh="\033[0;36mON${NC}"
 else
    status_ssh="\033[35mOFF${NC} "
 fi
@@ -57,7 +59,7 @@ fi
 ######################################
 ssh_ws=$( systemctl status ws | grep Active | awk '{print $3}' | sed 's/(//g' | sed 's/)//g' )
 if [[ $ssh_ws == "running" ]]; then
-    status_ws_epro="\033[92;1mON${NC}"
+    status_ws_epro="\033[0;36mON${NC}"
 else
     status_ws_epro="\033[35mOFF${NC} "
 fi
@@ -65,7 +67,7 @@ fi
 # RUNNING HAPROXY
 ######################################
 if [[ $haproxy_service == "running" ]]; then 
-   status_haproxy="\033[92;1mON${NC}"
+   status_haproxy="\033[0;36mON${NC}"
 else
    status_haproxy="\033[35mOFF${NC} "
 fi
@@ -73,7 +75,7 @@ fi
 # RUNNING XRAY
 ######################################
 if [[ $xray_service == "running" ]]; then 
-   status_xray="\033[92;1mON${NC}"
+   status_xray="\033[0;36mON${NC}"
 else
    status_xray="\033[35mOFF${NC} "
 fi
@@ -81,7 +83,7 @@ fi
 # RUNNING NGINX
 ######################################
 if [[ $nginx_service == "running" ]]; then 
-   status_nginx="\033[92;1mON${NC}"
+   status_nginx="\033[0;36mON${NC}"
 else
    status_nginx="\033[35mOFF${NC} "
 fi
@@ -89,11 +91,18 @@ fi
 # RUNNING DROPBEAR
 ######################################
 if [[ $dropbear_service == "running" ]]; then 
-   status_dropbear="\033[92;1mNice${NC}"
+   status_dropbear="\033[0;36mON${NC}"
 else
    status_dropbear="\033[35mOFF${NC} "
 fi
-
+######################################
+# RUNNING NOOBZVPN 
+######################################
+if [[ $noobz_service == "running" ]]; then 
+   status_noobz="\033[0;36mON${NC}"
+else
+   status_noobz="\033[35mOFF${NC} "
+fi
 # \\ Vless account //
 vlx=$(grep -c -E "^#& " "/etc/xray/config.json")
 let vla=$vlx/2
@@ -135,22 +144,22 @@ function Service_System_Operating() {
 }
 
 function Service_Status() {
-echo -e "${COLOR1}╭──────────────  • ${NC}${WH}STATUS SERVER${NC}${COLOR1} •  ───────────────╮${NC}"
+echo -e "${COLOR1}╭─────────────  • ${NC}${WH}STATUS SERVER${NC}${COLOR1} •  ─────────────╮${NC}"
 echo -e "  ${WH} SSH WS : $status_ws_epro ${WH} XRAY : $status_xray ${WH} NGINX : $status_nginx ${WH} DROPBEAR : $status_dropbear$NC"
 echo -e "             ${WH}  NOOBZVPNS : $status_noobz  HAPROXY : $status_haproxy${NC}"
 echo -e "${COLOR1}╰────────────────────────────────────────────────╯${NC}"
 }
 
 function List_All_Account() {
-  echo -e "     ${COLOR1}╭─────────────────────────────╮${NC}"
-echo -   "${COLOR1}$NC${WH}    LIST ACCOUNT PREMIUM ${NC}"
+  echo -e "     ${COLOR1}╭───────────────────────────╮${NC}"
+echo -   "${COLOR1}$NC${WH}      LIST ACCOUNT PREMIUM ${NC}"
 echo -e "     ${COLOR1}      ─────────────────────── ${NC}"
-echo -e "  ${COLOR1}$NC${WH}  SSH/NOOBZ   =  ${COLOR1}$ssh1 ${NC}${WH} Account ${NC}"
-echo -e "  ${COLOR1}$NC${WH}  VMESS/WS    =  ${COLOR1}$vma ${NC}${WH} Account ${NC}"
-echo -e "  ${COLOR1}$NC${WH}  VLESS/WS    =  ${COLOR1}$vla ${NC}${WH} Account ${NC}"
-echo -e "  ${COLOR1}$NC${WH}  TROJAN/GRPC =  $${COLOR1}$trb ${NC}${WH} Account ${NC}"
-echo -e "  ${COLOR1}$NC${WH}  SSR-LIBEV   =  ${COLOR1}$ssa ${NC}${WH} Account ${NC}"
-echo -e "     ${COLOR1}╰─────────────────────────────╯${NC}"
+echo -e "    ${COLOR1}$NC${WH}  SSH/NOOBZ   =  ${COLOR1}$ssh1 ${NC}${WH} Account ${NC}"
+echo -e "    ${COLOR1}$NC${WH}  VMESS/WS    =  ${COLOR1}$vma ${NC}${WH} Account ${NC}"
+echo -e "    ${COLOR1}$NC${WH}  VLESS/WS    =  ${COLOR1}$vla ${NC}${WH} Account ${NC}"
+echo -e "    ${COLOR1}$NC${WH}  TROJAN/GRPC =  $${COLOR1}$trb ${NC}${WH} Account ${NC}"
+echo -e "    ${COLOR1}$NC${WH}  SSR-LIBEV   =  ${COLOR1}$ssa ${NC}${WH} Account ${NC}"
+echo -e "      ${COLOR1}╰───────────────────────────╯${NC}"
 }
 
 function Details_Clients_Name() {
