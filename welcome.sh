@@ -135,7 +135,7 @@ function Service_System_Operating() {
   echo -e "\033[0;36m┌─────────────────────────────────────────────────┐\033[0m"
   echo -e "\033[0;36m│ \033[0;37m SYSTEM          : \033[0;36m $(cat /etc/os-release | grep -w ID | head -n1 | sed 's/=//g' | sed 's/"//g' | sed 's/ID//g')\033[0m"
   echo -e "\033[0;36m│ \033[0;37m RAM             : \033[0;36m $(free -m | awk 'NR==2 {print $2}')\033[0m"
-  echo -e "\033[0;36m│ \033[0;37m CPU             : \033[0;36m $cpu_load_percent%\033[0m"
+  echo -e "\033[0;36m│ \033[0;37m Load CPU        : \033[0;36m $cpu_load_percent%\033[0m"
   echo -e "\033[0;36m│ \033[0;37m UPTIME          : \033[0;36m $(uptime -p | cut -d " " -f 2-10)\033[0m"
   echo -e "\033[0;36m│ \033[0;37m ISP             : \033[0;36m $(cat /etc/xray/isp)\033[0m"
   echo -e "\033[0;36m│ \033[0;37m IP VPS          : \033[0;36m $(curl -s ipv4.icanhazip.com)\033[0m"
