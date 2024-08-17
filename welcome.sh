@@ -151,23 +151,23 @@ echo -e " ${COLOR1}╰───────────────────�
 }
 
 function List_All_Account() {
-  echo -e "        ${COLOR1}╭───────────────────────────╮${NC}"
-echo -e "       ${COLOR1}$NC${WH}      LIST ACCOUNT PREMIUM ${NC}"
-echo -e "       ${COLOR1}      ──────────────────── ${NC}"
-echo -e "        ${COLOR1}$NC${WH}  SSH/NOOBZ   =  ${COLOR1}$ssh1 ${NC}${WH} Account ${NC}"
-echo -e "        ${COLOR1}$NC${WH}  VMESS/WS    =  ${COLOR1}$vma ${NC}${WH} Account ${NC}"
-echo -e "        ${COLOR1}$NC${WH}  VLESS/WS    =  ${COLOR1}$vla ${NC}${WH} Account ${NC}"
-echo -e "        ${COLOR1}$NC${WH}  TROJAN/GRPC =  ${COLOR1}$trb ${NC}${WH} Account ${NC}"
-echo -e "        ${COLOR1}$NC${WH}  SSR-LIBEV   =  ${COLOR1}$ssa ${NC}${WH} Account ${NC}"
-echo -e "        ${COLOR1}╰────────────────────────────╯${NC}"
+  echo -e "         ${COLOR1}╭───────────────────────────╮${NC}"
+echo -e "        ${COLOR1}$NC${WH}      LIST ACCOUNT PREMIUM ${NC}"
+echo -e "        ${COLOR1}      ──────────────────── ${NC}"
+echo -e "         ${COLOR1}$NC${WH}  SSH/NOOBZ   =  ${COLOR1}$ssh1 ${NC}${WH} Account ${NC}"
+echo -e "         ${COLOR1}$NC${WH}  VMESS/WS    =  ${COLOR1}$vma ${NC}${WH} Account ${NC}"
+echo -e "         ${COLOR1}$NC${WH}  VLESS/WS    =  ${COLOR1}$vla ${NC}${WH} Account ${NC}"
+echo -e "         ${COLOR1}$NC${WH}  TROJAN/GRPC =  ${COLOR1}$trb ${NC}${WH} Account ${NC}"
+echo -e "         ${COLOR1}$NC${WH}  SSR-LIBEV   =  ${COLOR1}$ssa ${NC}${WH} Account ${NC}"
+echo -e "         ${COLOR1}╰────────────────────────────╯${NC}"
 }
 
 function Details_Clients_Name() {
-  echo -e "\033[0;36m   ┌───────────────────────────────────────────┐\033[0m"
-  echo -e "\033[0;36m   │   \033[0;37m VERSION    : \033[0;36mV.1.1\033[0m"
-  echo -e "\033[0;36m   │   \033[0;37m CLIENTS    : \033[0;36m$(cat /usr/bin/user)\033[0m"
-  echo -e "\033[0;36m   │   \033[0;37m EXPIRED    : \033[0;36m$(((d1 - d2) / 86400)) Day\033[0m"
-  echo -e "\033[0;36m   └───────────────────────────────────────────┘\033[0m"
+  echo -e "\033[0;36m┌─────────────────────────────────────────────────┐\033[0m"
+  echo -e "\033[0;36m│ \033[0;37m VERSION    : \033[0;36mV.1.1\033[0m"
+  echo -e "\033[0;36m│ \033[0;37m CLIENTS    : \033[0;36m$(cat /usr/bin/user)\033[0m"
+  echo -e "\033[0;36m│ \033[0;37m EXPIRED    : \033[0;36m$(((d1 - d2) / 86400)) Day\033[0m"
+  echo -e "\033[0;36m└─────────────────────────────────────────────────┘\033[0m"
 }
 
 function Details_Bw_Clients() {
