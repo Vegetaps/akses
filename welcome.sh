@@ -2,14 +2,11 @@
 ######################################
 MYIP=$(curl -sS ipv4.icanhazip.com)
 ######################################
-#// COLOR VALID 
+cpu_load=$(uptime | awk -F'load average:' '{print $2}' | cut -d, -f1)
+cpu_load_percent=$(echo "scale=2; $cpu_load * 100 / $(nproc)" | bc)
 NC="\e[0m"
 WH='\033[1;37m'
 COLOR1='\033[0;36m'
-
-# // CPU LOAD
-cpu_load=$(uptime | awk -F'load average:' '{print $2}' | cut -d, -f1)
-cpu_load_percent=$(echo "scale=2; $cpu_load * 100 / $(nproc)" | bc)
 clear
 # // Gettings Info
 ######################################
@@ -45,8 +42,6 @@ haproxy_service=$(systemctl status haproxy | grep Active | awk '{print $3}' | cu
 xray_service=$(systemctl status xray | grep Active | awk '{print $3}' | cut -d "(" -f2 | cut -d ")" -f1)
 
 nginx_service=$(systemctl status nginx | grep Active | awk '{print $3}' | cut -d "(" -f2 | cut -d ")" -f1)
-
-noobz_service=$( systemctl status noobzvpns | grep Active | awk '{print $3}' | sed 's/(//g' | sed 's/)//g' )
 
 clear
 ######################################
@@ -94,17 +89,9 @@ fi
 # RUNNING DROPBEAR
 ######################################
 if [[ $dropbear_service == "running" ]]; then 
-   status_dropbear="\033[92;1mON${NC}"
+   status_dropbear="\033[92;1mNice${NC}"
 else
    status_dropbear="\033[35mOFF${NC} "
-fi
-######################################
-# RUNNING NOOBZVPN 
-######################################
-if [[ $noobz_service == "running" ]]; then 
-   status_noobz="\033[92;1mON${NC}"
-else
-   status_noobz="\033[35mOFF${NC} "
 fi
 
 # \\ Vless account //
@@ -155,7 +142,7 @@ echo -e "${COLOR1}╰───────────────────�
 }
 
 function List_All_Account() {
-echo -e "     ${COLOR1}╭─────────────────────────────╮${NC}"
+  echo -e "     ${COLOR1}╭─────────────────────────────╮${NC}"
 echo -   ${COLOR1}$NC${WH}    LIST ACCOUNT PREMIUM ${NC}"
 echo -e "     ${COLOR1}      ─────────────────────── ${NC}"
 echo -e "  ${COLOR1}$NC${WH}  SSH/NOOBZ   =  ${COLOR1}$ssh1 ${NC}${WH} Account ${NC}"
@@ -167,11 +154,11 @@ echo -e "     ${COLOR1}╰──────────────────
 }
 
 function Details_Clients_Name() {
-  echo -e "\033[0;36m┌─────────────────────────────────────────────────┐\033[0m"
-  echo -e "\033[0;36m│   \033[0;37m VERSION    : \033[0;36mV.1.1\033[0m"
-  echo -e "\033[0;36m│   \033[0;37m CLIENTS    : \033[0;36m$(cat /usr/bin/user)\033[0m"
-  echo -e "\033[0;36m│   \033[0;37m EXPIRED    : \033[0;36m$(((d1 - d2) / 86400)) Day\033[0m"
-  echo -e "\033[0;36m└─────────────────────────────────────────────────┘\033[0m"
+  echo -e "\033[0;36m   ┌───────────────────────────────────────────┐\033[0m"
+  echo -e "\033[0;36m   │   \033[0;37m VERSION    : \033[0;36mV.1.1\033[0m"
+  echo -e "\033[0;36m   │   \033[0;37m CLIENTS    : \033[0;36m$(cat /usr/bin/user)\033[0m"
+  echo -e "\033[0;36m   │   \033[0;37m EXPIRED    : \033[0;36m$(((d1 - d2) / 86400)) Day\033[0m"
+  echo -e "\033[0;36m   └───────────────────────────────────────────┘\033[0m"
 }
 
 function Details_Bw_Clients() {
