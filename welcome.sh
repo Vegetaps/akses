@@ -144,15 +144,15 @@ function Service_System_Operating() {
 }
 
 function Service_Status() {
-echo -e "${COLOR1}╭─────────────  • ${NC}${WH}STATUS SERVER${NC}${COLOR1} •  ─────────────╮${NC}"
+echo -e " ${COLOR1}╭─────────────  • ${NC}${WH}STATUS SERVER${NC}${COLOR1} •  ──────────────╮${NC}"
 echo -e "  ${WH} SSH WS : $status_ws_epro ${WH} XRAY : $status_xray ${WH} NGINX : $status_nginx ${WH} DROPBEAR : $status_dropbear$NC"
 echo -e "             ${WH}  NOOBZVPNS : $status_noobz  HAPROXY : $status_haproxy${NC}"
-echo -e "${COLOR1}╰────────────────────────────────────────────────╯${NC}"
+echo -e " ${COLOR1}╰────────────────────────────────────────────────╯${NC}"
 }
 
 function List_All_Account() {
   echo -e "     ${COLOR1}╭───────────────────────────╮${NC}"
-echo -e"    ${COLOR1}$NC${WH}      LIST ACCOUNT PREMIUM ${NC}"
+echo -e "    ${COLOR1}$NC${WH}      LIST ACCOUNT PREMIUM ${NC}"
 echo -e "     ${COLOR1}      ─────────────────────── ${NC}"
 echo -e "    ${COLOR1}$NC${WH}  SSH/NOOBZ   =  ${COLOR1}$ssh1 ${NC}${WH} Account ${NC}"
 echo -e "    ${COLOR1}$NC${WH}  VMESS/WS    =  ${COLOR1}$vma ${NC}${WH} Account ${NC}"
