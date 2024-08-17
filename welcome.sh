@@ -117,22 +117,51 @@ let trb=$trx/2
 ssx=$(grep -c -E "^#!# " "/etc/xray/config.json")
 let ssa=$ssx/2
 
-kemarin=$(date -d "-1 days" +"%Y-%m-%d")
-hariini=$(date -d "0 days" +"%Y-%m-%d")
-bulan=$(date +"%Y-%m")
-
-# Mendapatkan penggunaan data kemarin
-kemarin1=$(vnstat -d | grep "${kemarin}" | awk '{print $6 $7}')
-echo "Penggunaan data kemarin: $kemarin1"
-
-# Mendapatkan penggunaan data hari ini
-hariini1=$(vnstat -d | grep "${hariini}" | awk '{print $6 $7}')
-echo "Penggunaan data hari ini: $hariini1"
-
-# Mendapatkan penggunaan data bulan ini
-bulan1=$(vnstat -m | grep "${bulan}" | awk '{print $6 $7}')
-echo "Penggunaan data bulan ini: $bulan1"
-
+# \\ Bandwidth
+vnstat_profile=$(vnstat | sed -n '3p' | awk '{print $1}' | grep -o '[^:]*')
+vnstat -i ${vnstat_profile} >/etc/t1
+bulan=$(date +%b)
+tahun=$(date +%y)
+ba=$(curl -s https://pastebin.com/raw/0gWiX6hE)
+today=$(vnstat -i ${vnstat_profile} | grep today | awk '{print $8}')
+todayd=$(vnstat -i ${vnstat_profile} | grep today | awk '{print $8}')
+today_v=$(vnstat -i ${vnstat_profile} | grep today | awk '{print $9}')
+today_rx=$(vnstat -i ${vnstat_profile} | grep today | awk '{print $2}')
+today_rxv=$(vnstat -i ${vnstat_profile} | grep today | awk '{print $3}')
+today_tx=$(vnstat -i ${vnstat_profile} | grep today | awk '{print $5}')
+today_txv=$(vnstat -i ${vnstat_profile} | grep today | awk '{print $6}')
+if [ "$(grep -wc ${bulan} /etc/t1)" != '0' ]; then
+bulan=$(date +%b)
+month=$(vnstat -i ${vnstat_profile} | grep "$bulan $ba$tahun" | awk '{print $9}')
+month_v=$(vnstat -i ${vnstat_profile} | grep "$bulan $ba$tahun" | awk '{print $10}')
+month_rx=$(vnstat -i ${vnstat_profile} | grep "$bulan $ba$tahun" | awk '{print $3}')
+month_rxv=$(vnstat -i ${vnstat_profile} | grep "$bulan $ba$tahun" | awk '{print $4}')
+month_tx=$(vnstat -i ${vnstat_profile} | grep "$bulan $ba$tahun" | awk '{print $6}')
+month_txv=$(vnstat -i ${vnstat_profile} | grep "$bulan $ba$tahun" | awk '{print $7}')
+else
+bulan2=$(date +%Y-%m)
+month=$(vnstat -i ${vnstat_profile} | grep "$bulan2 " | awk '{print $8}')
+month_v=$(vnstat -i ${vnstat_profile} | grep "$bulan2 " | awk '{print $9}')
+month_rx=$(vnstat -i ${vnstat_profile} | grep "$bulan2 " | awk '{print $2}')
+month_rxv=$(vnstat -i ${vnstat_profile} | grep "$bulan2 " | awk '{print $3}')
+month_tx=$(vnstat -i ${vnstat_profile} | grep "$bulan2 " | awk '{print $5}')
+month_txv=$(vnstat -i ${vnstat_profile} | grep "$bulan2 " | awk '{print $6}')
+fi
+if [ "$(grep -wc yesterday /etc/t1)" != '0' ]; then
+yesterday=$(vnstat -i ${vnstat_profile} | grep yesterday | awk '{print $8}')
+yesterday_v=$(vnstat -i ${vnstat_profile} | grep yesterday | awk '{print $9}')
+yesterday_rx=$(vnstat -i ${vnstat_profile} | grep yesterday | awk '{print $2}')
+yesterday_rxv=$(vnstat -i ${vnstat_profile} | grep yesterday | awk '{print $3}')
+yesterday_tx=$(vnstat -i ${vnstat_profile} | grep yesterday | awk '{print $5}')
+yesterday_txv=$(vnstat -i ${vnstat_profile} | grep yesterday | awk '{print $6}')
+else
+yesterday=NULL
+yesterday_v=NULL
+yesterday_rx=NULL
+yesterday_rxv=NULL
+yesterday_tx=NULL
+yesterday_txv=NULL
+fi
 
 function paintechvpn() {
   clear
@@ -177,8 +206,8 @@ echo -e "         ${COLOR1}╰────────────────�
 
 function Details_Bw_Clients() {
   echo -e "\033[0;36m   ┌───────────────────────────────────────────┐\033[0m"
-  echo -e "\033[0;36m   │  \033[0;37m KEMARIN   |  HARI INI   |  BULANAN\033[0m" 
-  echo -e "\033[0;36m   │  \033[0;36m$kemarin1 $hariini1  $bulan1\033[0m"           
+  echo -e "\033[0;36m   │  \033[0;37m HARI INI    |  KEMARIN    |  BULANAN\033[0m" 
+  echo -e "\033[0;36m   │  \033[0;36m$today_tx $today_txv ${WH}$yesterday_tx $yesterday_txv ${WH}$month_tx $month_txv  $bulan1\033[0m"           
   echo -e "\033[0;36m   └───────────────────────────────────────────┘\033[0m"
 }
 
