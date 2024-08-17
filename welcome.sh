@@ -146,7 +146,7 @@ function Service_System_Operating() {
 function Service_Status() {
 echo -e " ${COLOR1}╭─────────────  • ${NC}${WH}STATUS SERVER${NC}${COLOR1} •  ──────────────╮${NC}"
 echo -e "  ${WH} SSH WS : $status_ws_epro ${WH} XRAY : $status_xray ${WH} NGINX : $status_nginx ${WH} PROXY : $status_haproxy${NC}"
-echo -e "             ${WH}  NOOBZVPNS : $status_noobz  ${WH} DROPBEAR : $status_dropbear$NC"
+echo -e "            ${WH}  NOOBZVPNS : $status_noobz  ${WH} DROPBEAR : $status_dropbear$NC"
 echo -e " ${COLOR1}╰────────────────────────────────────────────────╯${NC}"
 }
 
