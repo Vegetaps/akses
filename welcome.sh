@@ -206,7 +206,7 @@ echo -e "         ${COLOR1}╰────────────────�
 
 function Details_Bw_Clients() {
   echo -e "\033[0;36m   ┌───────────────────────────────────────────┐\033[0m"
-  echo -e "\033[0;36m   │  \033[0;37m HARI INI    |  KEMARIN    |  BULANAN\033[0m" 
+  echo -e "\033[0;36m   │  \033[0;37m HARI INI   |  KEMARIN   |  BULANAN\033[0m" 
   echo -e "\033[0;36m   │  \033[0;36m${WH}$today_tx $today_txv     ${WH}$yesterday_tx $yesterday_txv      ${WH}$month_tx $month_txv$COLOR1\033[0m"           
   echo -e "\033[0;36m   └───────────────────────────────────────────┘\033[0m"
 }
