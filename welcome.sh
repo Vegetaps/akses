@@ -186,29 +186,29 @@ function Service_System_Operating() {
 }
 
 function Service_Status() {
-echo -e " ${COLOR1}╭─────────────  • ${NC}${WH}STATUS SERVER${NC}${COLOR1} •  ──────────────╮${NC}"
+echo -e " ${COLOR1}╭────────────────────────────────────────────────╮${NC}"
 echo -e "  ${WH} SSH WS : $status_ws_epro ${WH} XRAY : $status_xray ${WH} NGINX : $status_nginx ${WH} PROXY : $status_haproxy${NC}"
 echo -e "            ${WH}  NOOBZVPNS : $status_noobz  ${WH} DROPBEAR : $status_dropbear$NC"
 echo -e " ${COLOR1}╰────────────────────────────────────────────────╯${NC}"
 }
 
 function List_All_Account() {
-  echo -e "         ${COLOR1}╭───────────────────────────╮${NC}"
-echo -e "        ${COLOR1}$NC${WH}      LIST ACCOUNT PREMIUM ${NC}"
-echo -e "        ${COLOR1}      ──────────────────── ${NC}"
-echo -e "         ${COLOR1}$NC${WH}  SSH/NOOBZ   =  ${COLOR1}$ssh1 ${NC}${WH} Account ${NC}"
-echo -e "         ${COLOR1}$NC${WH}  VMESS/WS    =  ${COLOR1}$vma ${NC}${WH} Account ${NC}"
-echo -e "         ${COLOR1}$NC${WH}  VLESS/WS    =  ${COLOR1}$vla ${NC}${WH} Account ${NC}"
-echo -e "         ${COLOR1}$NC${WH}  TROJAN/GRPC =  ${COLOR1}$trb ${NC}${WH} Account ${NC}"
-echo -e "         ${COLOR1}$NC${WH}  SSR-LIBEV   =  ${COLOR1}$ssa ${NC}${WH} Account ${NC}"
-echo -e "         ${COLOR1}╰────────────────────────────╯${NC}"
+  echo -e "          ${COLOR1}╭───────────────────────────╮${NC}"
+echo -e "         ${COLOR1}$NC${WH}      LIST ACCOUNT PREMIUM ${NC}"
+echo -e "         ${COLOR1}      ──────────────────── ${NC}"
+echo -e "          ${COLOR1}$NC${WH}  SSH/NOOBZ   =  ${COLOR1}$ssh1 ${NC}${WH} Account ${NC}"
+echo -e "          ${COLOR1}$NC${WH}  VMESS/WS    =  ${COLOR1}$vma ${NC}${WH} Account ${NC}"
+echo -e "          ${COLOR1}$NC${WH}  VLESS/WS    =  ${COLOR1}$vla ${NC}${WH} Account ${NC}"
+echo -e "          ${COLOR1}$NC${WH}  TROJAN/GRPC =  ${COLOR1}$trb ${NC}${WH} Account ${NC}"
+echo -e "          ${COLOR1}$NC${WH}  SSR-LIBEV   =  ${COLOR1}$ssa ${NC}${WH} Account ${NC}"
+echo -e "          ${COLOR1}╰────────────────────────────╯${NC}"
 }
 
 function Details_Bw_Clients() {
   echo -e "\033[0;36m   ┌───────────────────────────────────────────┐\033[0m"
   echo -e "\033[0;36m   │  \033[1;37m HARI INI   |  KEMARIN   |  BULANAN\033[0m" 
   echo -e "\033[0;36m   │\033[0;36m──────────────────────────────────────── \033[0m"
-  echo -e "\033[0;36m   │  \033[0;36m${COLOR1}$today_tx $today_txv     ${COLOR1}$yesterday_tx $yesterday_txv      ${COLOR1}$month_tx $month_txv{$COLOR1}\033[0m"           
+  echo -e "\033[0;36m   │  \033[0;36m${COLOR1}$today_tx $today_txv     ${COLOR1}$yesterday_tx $yesterday_txv      ${COLOR1}$month_tx $month_txv\033[0m"           
   echo -e "\033[0;36m   └───────────────────────────────────────────┘\033[0m"
 }
 
