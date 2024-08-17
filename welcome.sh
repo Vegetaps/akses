@@ -117,12 +117,22 @@ let trb=$trx/2
 ssx=$(grep -c -E "^#!# " "/etc/xray/config.json")
 let ssa=$ssx/2
 
-kemarin=$(date -d "-1 days" +"%m/%d")
-hariini=$(date -d "0 days" +"%m/%d")
-bulan=$(date +"%b '%y")
-kemarin1=$(vnstat -d | grep "${kemarin}" | cut -d "|" -f 3) 
-hariini1=$(vnstat -d | grep "${hariini}" | cut -d "|" -f 3)
-bulan1=$(vnstat -m | grep "${bulan}" | cut -d "|" -f 3) 
+kemarin=$(date -d "-1 days" +"%Y-%m-%d")
+hariini=$(date -d "0 days" +"%Y-%m-%d")
+bulan=$(date +"%Y-%m")
+
+# Mendapatkan penggunaan data kemarin
+kemarin1=$(vnstat -d | grep "${kemarin}" | awk '{print $6 $7}')
+echo "Penggunaan data kemarin: $kemarin1"
+
+# Mendapatkan penggunaan data hari ini
+hariini1=$(vnstat -d | grep "${hariini}" | awk '{print $6 $7}')
+echo "Penggunaan data hari ini: $hariini1"
+
+# Mendapatkan penggunaan data bulan ini
+bulan1=$(vnstat -m | grep "${bulan}" | awk '{print $6 $7}')
+echo "Penggunaan data bulan ini: $bulan1"
+
 
 function paintechvpn() {
   clear
