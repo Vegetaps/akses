@@ -48,11 +48,8 @@ IP VPS : $IP
 Date   : $date
 Time   : $time WIB
 Link   : $link" https://api.telegram.org/bot$token/sendDocument &> /dev/null
-rm -fr /root/backup &> /dev/null
-rm -fr /root/user-backup &> /dev/null
-rm -f /root/$NameUser.zip &> /dev/null
-rm -r /root/$IP-$date.zip &> /dev/null
-rm -f /root/$IP.zip &> /dev/null
+rm -rf /root/backup
+rm -r /root/$IP-$date.zip
 echo " Please Check Your BOT"
 echo -e ""
 read -n 1 -s -r -p "Press any key to back on menu"
