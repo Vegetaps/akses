@@ -23,7 +23,6 @@ sleep 1
 echo -e "${CYAN}[ INFO ] ${BLUE}Processing... "
 mkdir /root/backup &>/dev/null
 echo -e "${CYAN}[ INFO ] ${BLUE}Mohon Ditunggu... "
-wget -O /root/backup/ipmini https://raw.githubusercontent.com/Vegetaps/akses/main/ip &> /dev/null
 cp /etc/passwd backup/ &>/dev/null
 cp /etc/group backup/ &>/dev/null
 cp /etc/shadow backup/ &>/dev/null
