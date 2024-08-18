@@ -21,22 +21,28 @@ id_chat=$(grep -E "^#bot# " "/etc/bot/.bot.db" | cut -d ' ' -f 3)
 clear
 sleep 1
 echo -e "${CYAN}[ INFO ] ${BLUE}Processing... "
-mkdir /root/backup &>/dev/null
 echo -e "${CYAN}[ INFO ] ${BLUE}Mohon Ditunggu... "
-cp /etc/passwd backup/ &>/dev/null
-cp /etc/group backup/ &>/dev/null
-cp /etc/shadow backup/ &>/dev/null
-cp /etc/gshadow backup/ &>/dev/null
-cp -r /etc/kyt/limit backup/limit &>/dev/null
-cp -r /etc/vmess backup/vmess &>/dev/null
-cp -r /etc/trojan backup/trojan &>/dev/null
-cp -r /etc/vless backup/vless &>/dev/null
-cp -r /etc/shadowsock backup/shadowsock &>/dev/null
-cp -r /var/lib/kyt/ backup/kyt &>/dev/null
-cp -r /etc/xray backup/xray &>/dev/null
-cp -r /var/www/html backup/html &>/dev/null
-cd /root &>/dev/null
-zip -r $IP.zip backup > /dev/null 2>&1
+rm -rf /root/backup
+mkdir /root/backup
+cp /etc/passwd backup/
+cp /etc/group backup/
+cp /etc/shadow backup/
+cp /etc/gshadow backup/
+cp /etc/crontab backup/
+cp /etc/vmess/.vmess.db backup/
+cp /etc/ssh/.ssh.db backup/
+cp /etc/vless/.vless.db backup/
+cp /etc/trojan/.trojan.db backup/
+cp /etc/shadowsocks/.shadowsocks.db backup/
+cp -r /etc/kyt/limit backup/
+cp -r /etc/vmess backup/
+cp -r /etc/trojan backup/
+cp -r /etc/vless backup/
+cp -r /etc/shadowsock backup/
+cp -r /var/lib/kyt/ backup/kyt 
+cp -r /etc/xray backup/xray
+cp -r /var/www/html/ backup/html
+cd /root
 zip -r $IP-$date.zip backup > /dev/null 2>&1
 rclone copy /root/$IP-$date.zip dr:backup/
 url=$(rclone link dr:backup/$IP-$date.zip)
@@ -50,7 +56,13 @@ Time   : $time WIB
 Link   : $link" https://api.telegram.org/bot$token/sendDocument &> /dev/null
 rm -rf /root/backup
 rm -r /root/$IP-$date.zip
-echo " Please Check Your BOT"
-echo -e ""
+echo -e "
+Detail Backup 
+==================================
+IP VPS        : $IP
+Link Backup   : $link
+Tanggal       : $date
+==================================
+"
 read -n 1 -s -r -p "Press any key to back on menu"
 menu
