@@ -2,7 +2,7 @@
 RED='\033[0;31m'
 NC='\e[0m'
 GREEN='\033[0;32m'
-hijau="\033[96m"
+CYN="\033[96m"
 CYN="\033[96m"
 CY="\033[36m"
 clear
@@ -24,7 +24,7 @@ UdpSSH=$(systemctl status udp-custom | grep active | awk '{print $3}' | sed 's/(
 
 openssh=$( systemctl status ssh | grep Active | awk '{print $3}' | sed 's/(//g' | sed 's/)//g' )
 if [[ $openssh == "running" ]]; then
-    status_openssh="${GREEN} Online$NC │$NC "
+    status_openssh="${GREEN} Online$NC │$NC"
 else
     status_openssh="${RED}Offline$NC │$NC "
 fi
@@ -32,9 +32,9 @@ fi
 # // SSH Websocket Proxy
 ssh_ws=$( systemctl status ws | grep Active | awk '{print $3}' | sed 's/(//g' | sed 's/)//g' )
 if [[ $ssh_ws == "running" ]]; then
-    status_ws_epro="${GREEN} Online$NC │$NC "
+    status_ws_epro="${GREEN} Online$NC │$NC"
 else
-    status_ws_epro="${RED}Offline$NC │$NC "
+    status_ws_epro="${RED}Offline$NC │$NC"
 fi
 
 # // Trojan Proxy
@@ -137,48 +137,51 @@ fi
 
 # STATUS SERVICE  SSH UDP 
 if [[ $UdpSSH == "running" ]]; then 
-   status_udp="${GREEN} Online$NC │$NC "
+   status_udp="${GREEN} Online$NC │$NC"
 else
-   status_udp="${RED}Offline$NC │$NC "
+   status_udp="${RED}Offline$NC │$NC"
 fi
 
 # // Running Function 
 clear
 echo ""
-echo -e " ┌───────────────────────────────────────┐"
-echo -e " │\033[46m             SERVICE INFORMATION             $NC│"
-echo -e " └───────────────────────────────────────┘"
-echo -e " ┌───────────────────────────────────────┐"
-echo -e " │ ${CYN}Service SSH / TUN${NC}                 ${CY}=$NC $status_ssh"
-echo -e " │ ${CYN}Service SSH UDP${NC}                   ${CY}=$NC $status_udp"
-echo -e " │ ${CYN}Service OpenVPN SSL${NC}               ${CY}=$NC $status_openvpn"
-echo -e " │ ${CYN}Service OpenVPN WS-SSL${NC}            ${CY}=$NC $status_openvpn"
-echo -e " │ ${CYN}Service OpenVPN UDP${NC}               ${CY}=$NC $status_openvpn"
-echo -e " │ ${CYN}Service OpenVPN TCP${NC}               ${CY}=$NC $status_openvpn"
-echo -e " │ ${CYN}Service OHP SSH${NC}                   ${CY}=$NC $status_openvpn"
-echo -e " │ ${CYN}Service OHP Dropbear${NC}              ${CY}=$NC $status_openvpn"
-echo -e " │ ${CYN}Service OHP OpenVPN${NC}               ${CY}=$NC $status_openvpn"
-echo -e " │ ${CYN}Service WS ePRO${NC}                   ${CY}=$NC $status_ws_epro"
-echo -e " │ ${CYN}Service BadVPN 7100${NC}               ${CY}=$NC $status_udp1"
-echo -e " │ ${CYN}Service BadVPN 7200${NC}               ${CY}=$NC $status_udp2"
-echo -e " │ ${CYN}Service BadVPN 7300${NC}               ${CY}=$NC $status_udp3"
-echo -e " │ ${CYN}Service Dropbear${NC}                  ${CY}=$NC $status_beruangjatuh"
-echo -e " │ ${CYN}Service Haproxy${NC}                   ${CY}=$NC $status_haproxy"
-echo -e " │ ${CYN}Service Crons${NC}                     ${CY}=$NC $status_cron"
-echo -e " │ ${CYN}Service Nginx Webserver${NC}           ${CY}=$NC $status_nginx"
-echo -e " │ ${CYN}Service Xray Vmess WS TLS${NC}         ${CY}=$NC $status_ss"
-echo -e " │ ${CYN}Service Xray Vmess WS Non TLS${NC}     ${CY}=$NC $status_ss"
-echo -e " │ ${CYN}Service Xray Vmess gRPC${NC}           ${CY}=$NC $status_ss"
-echo -e " │ ${CYN}Service Xray Vless WS TLS${NC}         ${CY}=$NC $status_ss"
-echo -e " │ ${CYN}Service Xray Vless WS Non TLS${NC}     ${CY}=$NC $status_ss"
-echo -e " │ ${CYN}Service Xray Vless gRPC${NC}           ${CY}=$NC $status_ss"
-echo -e " │ ${CYN}Service Xray Trojan WS${NC}            ${CY}=$NC $status_ss"
-echo -e " │ ${CYN}Service Xray Trojan Non WS${NC}        ${CY}=$NC $status_ss"
-echo -e " │ ${CYN}Service Xray Trojan gRPC${NC}          ${CY}=$NC $status_ss"
-echo -e " │ ${CYN}Service Iptables${NC}                  ${CY}=$NC $status_galo"
-echo -e " │ ${CYN}Service RClocal${NC}                   ${CY}=$NC $status_galoo"
-echo -e " │ ${CYN}Service Autoreboot${NC}                ${CY}=$NC $status_galooo"
-echo -e " └───────────────────────────────────────┘"
+echo -e " ${CYN}┌────────────────────────────────────────────┐${NC}"
+echo -e " ${CYN}│$NC$NC\033[41m             SERVICE INFORMATION           $NC${CYN}│$NC"
+echo -e " ${CYN}└────────────────────────────────────────────┘${NC}"
+echo -e " ${CYN}┌────────────────────────────────────────────┐${NC}"
+echo -e " ${CYN}│ ${CYN}Service SSH / TUN                 $CY=$NC $status_ssh"
+echo -e " ${CYN}│ ${CYN}Service SSH UDP                   $CY=$NC $status_udp"
+echo -e " ${CYN}│ ${CYN}Service OpenVPN SSL               $CY=$NC $status_openvpn"
+echo -e " ${CYN}│ ${CYN}Service OpenVPN WS-SSL            $CY=$NC $status_openvpn"
+echo -e " ${CYN}│ ${CYN}Service OpenVPN UDP               $CY=$NC $status_openvpn"
+echo -e " ${CYN}│ ${CYN}Service OpenVPN TCP               $CY=$NC $status_openvpn"
+echo -e " ${CYN}│ ${CYN}Service OHP SSH                   $CY=$NC $status_openvpn"
+echo -e " ${CYN}│ ${CYN}Service OHP Dropbear              $CY=$NC $status_openvpn"
+echo -e " ${CYN}│ ${CYN}Service OHP OpenVPN               $CY=$NC $status_openvpn"
+echo -e " ${CYN}│ ${CYN}Service WS ePRO                   $CY=$NC $status_ws_epro"
+echo -e " ${CYN}│ ${CYN}Service BadVPN 7100               $CY=$NC $status_udp1"
+echo -e " ${CYN}│ ${CYN}Service BadVPN 7200               $CY=$NC $status_udp2"
+echo -e " ${CYN}│ ${CYN}Service BadVPN 7300               $CY=$NC $status_udp3"
+echo -e " ${CYN}│ ${CYN}Service Dropbear                  $CY=$NC $status_beruangjatuh"
+echo -e " ${CYN}│ ${CYN}Service Haproxy                   $CY=$NC $status_haproxy"
+echo -e " ${CYN}│ ${CYN}Service Crons                     $CY=$NC $status_cron"
+echo -e " ${CYN}│ ${CYN}Service Nginx Webserver           $CY=$NC $status_nginx"
+echo -e " ${CYN}│ ${CYN}Service Xray Vmess WS TLS         $CY=$NC $status_ss"
+echo -e " ${CYN}│ ${CYN}Service Xray Vmess WS Non TLS     $CY=$NC $status_ss"
+echo -e " ${CYN}│ ${CYN}Service Xray Vmess gRPC           $CY=$NC $status_ss"
+echo -e " ${CYN}│ ${CYN}Service Xray Vless WS TLS         $CY=$NC $status_ss"
+echo -e " ${CYN}│ ${CYN}Service Xray Vless WS Non TLS     $CY=$NC $status_ss"
+echo -e " ${CYN}│ ${CYN}Service Xray Vless gRPC           $CY=$NC $status_ss"
+echo -e " ${CYN}│ ${CYN}Service Xray Trojan WS            $CY=$NC $status_ss"
+echo -e " ${CYN}│ ${CYN}Service Xray Trojan Non WS        $CY=$NC $status_ss"
+echo -e " ${CYN}│ ${CYN}Service Xray Trojan gRPC          $CY=$NC $status_ss"
+echo -e " ${CYN}│ ${CYN}Service Xray Shadowsocks WS       $CY=$NC $status_ss"
+echo -e " ${CYN}│ ${CYN}Service Xray Shadowsocks Non WS   $CY=$NC $status_ss"
+echo -e " ${CYN}│ ${CYN}Service Xray Shadowsocks gRPC     $CY=$NC $status_ss"
+echo -e " ${CYN}│ ${CYN}Service Iptables                  $CY=$NC $status_galo"
+echo -e " ${CYN}│ ${CYN}Service RClocal                   $CY=$NC $status_galoo"
+echo -e " ${CYN}│ ${CYN}Service Autoreboot                $CY=$NC $status_galooo"
+echo -e " ${CYN}└────────────────────────────────────────────┘${NC}"
 echo ""
 read -n 1 -s -r -p "Press [ Enter ] to back menu"
 menu
