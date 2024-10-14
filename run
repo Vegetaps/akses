@@ -24,7 +24,7 @@ UdpSSH=$(systemctl status udp-custom | grep active | awk '{print $3}' | sed 's/(
 
 openssh=$( systemctl status ssh | grep Active | awk '{print $3}' | sed 's/(//g' | sed 's/)//g' )
 if [[ $openssh == "running" ]]; then
-    status_openssh="${GREEN} Online$NC │$NC"
+    status_openssh="${GREEN} Online$NC │$NC "
 else
     status_openssh="${RED}Offline$NC │$NC "
 fi
@@ -32,9 +32,9 @@ fi
 # // SSH Websocket Proxy
 ssh_ws=$( systemctl status ws | grep Active | awk '{print $3}' | sed 's/(//g' | sed 's/)//g' )
 if [[ $ssh_ws == "running" ]]; then
-    status_ws_epro="${GREEN} Online$NC │$NC"
+    status_ws_epro="${GREEN} Online$NC │$NC "
 else
-    status_ws_epro="${RED}Offline$NC │$NC"
+    status_ws_epro="${RED}Offline$NC │$NC "
 fi
 
 # // Trojan Proxy
@@ -137,20 +137,20 @@ fi
 
 # STATUS SERVICE  SSH UDP 
 if [[ $UdpSSH == "running" ]]; then 
-   status_udp="${GREEN} Online$NC │$NC"
+   status_udp="${GREEN} Online$NC │$NC "
 else
-   status_udp="${RED}Offline$NC │$NC"
+   status_udp="${RED}Offline$NC │$NC "
 fi
 
 # // Running Function 
 clear
 echo ""
 echo -e " ┌───────────────────────────────────────┐"
-echo -e " │\033[41m             SERVICE INFORMATION           $NC$│"
+echo -e " │\033[46m             SERVICE INFORMATION             $NC│"
 echo -e " └───────────────────────────────────────┘"
 echo -e " ┌───────────────────────────────────────┐"
-echo -e " │ ${CYN}Service SSH / TUN${NC}                  ${CY}=$NC $status_ssh"
-echo -e " │ ${CYN}Service SSH UDP${NC}                    ${CY}=$NC $status_udp"
+echo -e " │ ${CYN}Service SSH / TUN${NC}                 ${CY}=$NC $status_ssh"
+echo -e " │ ${CYN}Service SSH UDP${NC}                   ${CY}=$NC $status_udp"
 echo -e " │ ${CYN}Service OpenVPN SSL${NC}               ${CY}=$NC $status_openvpn"
 echo -e " │ ${CYN}Service OpenVPN WS-SSL${NC}            ${CY}=$NC $status_openvpn"
 echo -e " │ ${CYN}Service OpenVPN UDP${NC}               ${CY}=$NC $status_openvpn"
